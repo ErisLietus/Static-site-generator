@@ -5,6 +5,7 @@ from inline_markdown import split_node_delimiter
 from extract_markdown import extract_markdown_images, extract_markdown_links
 from split_image import split_nodes_image
 from split_link import split_nodes_link
+from text_to_text import text_to_textnodes
 
 
 class TestTextNode(unittest.TestCase):
@@ -139,6 +140,27 @@ class TestTextNode(unittest.TestCase):
                 TextNode(" and another ", TextType.TEXT),
                 TextNode("link", TextType.LINK, "www.salmon.com"),
                 TextNode(" fish", TextType.TEXT),
+            ],
+            new_nodes,
+        )
+    
+    def test_text_to_text_(self):
+            text ="This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
+            
+
+            new_nodes = text_to_textnodes(text)
+            self.assertListEqual(
+            [
+                TextNode("This is ", TextType.TEXT),
+                TextNode("text", TextType.BOLD),
+                TextNode(" with an ", TextType.TEXT),
+                TextNode("italic", TextType.ITALIC),
+                TextNode(" word and a ", TextType.TEXT),
+                TextNode("code block", TextType.CODE),
+                TextNode(" and an ", TextType.TEXT),
+                TextNode("obi wan image", TextType.IMAGE, "https://i.imgur.com/fJRm4Vk.jpeg"),
+                TextNode(" and a ", TextType.TEXT),
+                TextNode("link", TextType.LINK, "https://boot.dev"),
             ],
             new_nodes,
         )
