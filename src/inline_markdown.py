@@ -14,14 +14,14 @@ def split_node_delimiter(old_nodes, delimiter, text_type):
         parts = node.text.split(delimiter)
 
         if len(parts) % 2 == 0:
-            raise Exception("invalid markdown, unmatched delimiter") # if there is a single delimiter raise exception because it doesnt have a matching closing delimiter
+            raise Exception("invalid markdown, unmatched delimiter")
         
         for i, part in enumerate(parts):
-            if part == "": # these are just a normal string quotes ? 
+            if part == "": 
                 continue
             if i % 2 == 0: 
                 new_nodes.append(TextNode(part, TextType.TEXT))
             else: 
-                new_nodes.append(TextNode(part, text_type)) # sorry brain not worky on this part 
+                new_nodes.append(TextNode(part, text_type)) 
 
     return new_nodes

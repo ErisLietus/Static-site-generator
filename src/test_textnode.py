@@ -7,6 +7,7 @@ from split_image import split_nodes_image
 from split_link import split_nodes_link
 from text_to_text import text_to_textnodes
 from split_blocks import markdown_to_blocks
+from blocktype import BlockType, block_to_block_type
 
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
@@ -183,6 +184,8 @@ This is the same paragraph on a new line
                 "- This is a list\n- with items",
             ],
         )
+
+        
 if __name__ == "__main__":
     unittest.main()
 
