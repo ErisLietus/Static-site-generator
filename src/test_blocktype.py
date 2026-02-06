@@ -1,6 +1,7 @@
 import unittest
 from blocktype import block_to_block_type, BlockType
 
+
 class TestBlockToBlockType(unittest.TestCase):
     def test_heading_block(self):
         markdown_block = "# This is a heading"

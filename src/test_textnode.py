@@ -8,6 +8,7 @@ from split_link import split_nodes_link
 from text_to_text import text_to_textnodes
 from split_blocks import markdown_to_blocks
 from blocktype import BlockType, block_to_block_type
+from extract_title import extract_title
 
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
@@ -185,7 +186,19 @@ This is the same paragraph on a new line
             ],
         )
 
+    def test_title_markdown(self):
+        md = "# this is a title\nthis is a test"
+        title = extract_title(md)
+        assert title == "this is a title"
+    
+    def test_not_a_title_markdown(self):
+        md = "this is a title\nthis is a test"
+        with self.assertRaises(Exception):
+            extract_title(md)
         
+        
+
+
 if __name__ == "__main__":
     unittest.main()
 
