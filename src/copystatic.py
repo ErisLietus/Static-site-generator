@@ -7,7 +7,6 @@ def copy_static(source, dest):
         shutil.rmtree(dest)
 
     os.mkdir(dest)
-
     copy_recursive(source, dest)
 
 
