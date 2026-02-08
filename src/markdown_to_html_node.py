@@ -25,5 +25,7 @@ def markdown_to_html_node(markdown):
         elif block_type == BlockType.ORDERED_LIST:
             children.append(ordered_list_to_block_node(block))
 
-    
-    return ParentNode("div",children)
+        elif block_type == BlockType.UNORDERED_LIST: 
+            children.append(unordered_list_to_block_node(block))
+
+    return ParentNode("div", children)
